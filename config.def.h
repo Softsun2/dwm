@@ -1,14 +1,5 @@
 /* See LICENSE file for copyright and license details. */
 
-/* Tweaks:
-	bottom bar/dmenu
-*/
-
-/* Patches:
-	xrdb - runtime colors
-	actualfullscreen - better fullscreen
-	pertag - pertag layouts
-*/
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -71,9 +62,11 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-b", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[] = { "kitty", NULL };
 static const char *volmutecmd[] = { "audiocontrol", "toggle", NULL };
-static const char *voldowncmd[] = { "audiocontrol", "down", NULL };
 static const char *volupcmd[] = { "audiocontrol", "up", NULL };
+static const char *voldowncmd[] = { "audiocontrol", "down", NULL };
 // static const char *tgglappearancecmd[] = { "", NULL };
+static const char *brightupcmd[] = { "brightnesscontrol", "up", NULL };
+static const char *brightdowncmd[] = { "brightnesscontrol", "down", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -94,7 +87,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,        {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,        {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating,   {0} },
-	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,    {0} },					// toggle fullscreen
+	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,    {0} },					    // toggle fullscreen
 	{ MODKEY,                       XK_0,      view,             {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,              {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,         {.i = -1 } },
@@ -102,9 +95,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,           {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,           {.i = +1 } },
 	{ MODKEY,                       XK_F5,     xrdb,             {.v = NULL } },			// reload xresources colors
-	{ MODKEY|ShiftMask,             XK_m,      spawn,            {.v = volmutecmd } },			// reload xresources colors
-	{ MODKEY|ShiftMask,             XK_d,      spawn,            {.v = voldowncmd } },			// reload xresources colors
-	{ MODKEY|ShiftMask,             XK_u,      spawn,            {.v = volupcmd } },			// reload xresources colors
+	{ MODKEY|ShiftMask,             XK_m,      spawn,            {.v = volmutecmd } },		// mute audio
+	{ MODKEY|ShiftMask,             XK_Up,     spawn,            {.v = volupcmd } },		// increase audio
+	{ MODKEY|ShiftMask,             XK_Down,   spawn,            {.v = voldowncmd } },		// decrease audio
+	{ MODKEY|ShiftMask,             XK_Right,  spawn,            {.v = brightupcmd } },		// increase brightness
+	{ MODKEY|ShiftMask,             XK_Left,   spawn,            {.v = brightdowncmd } },	// decrease brightness
 	TAGKEYS(                        XK_1,                        0)
 	TAGKEYS(                        XK_2,                        1)
 	TAGKEYS(                        XK_3,                        2)

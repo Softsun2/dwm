@@ -19,9 +19,11 @@ bottom bar/dmenu
 ## New binds
 
 ```
-mod + shift + m : mute audio
-mod + shift + u : increase audio
-mod + shift + d : decrease audio
-mod + F5        : reload xresources colors
-mod + shift + f : toggle application fullscreen
+mod + shift + m     : mute audio
+mod + shift + up    : increase audio
+mod + shift + down  : decrease audio
+mod + shift + right : increase brightness
+mod + shift + left  : decrease brightness
+mod + F5            : reload xresources colors
+mod + shift + f     : toggle application fullscreen
 ```
