@@ -1,5 +1,7 @@
 #!/bin/sh
 
+
+
 # TODO: emojis for temperature and time, signal based volume and brightness
 
 # gets cpu usage
