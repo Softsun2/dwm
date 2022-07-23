@@ -5,9 +5,15 @@ Some features rely on scripts that live ![here](https://github.com/Softsun2/dotf
 I use the windows key as the mod key.
 
 
+## Todo
+* Autostart or initial theme loading
+* bar only redraws on active monitor
+
+
 ## Tweaks
 
 * bottom bar/dmenu
+* middle section of bar on selected monitor uses the normal scheme rather than the selected scheme
 * theme loading, uses ![this script](https://github.com/Softsun2/dotfiles-NixOS/blob/main/bin/themecontrol).
 
 
